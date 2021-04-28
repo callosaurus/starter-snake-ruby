@@ -11,8 +11,8 @@ use Rack::PostBodyContentTypeParser
 get '/' do
   appearance = {
     apiversion: "1",        
-    author: "",           # TODO: Your Battlesnake Username
-    color: "#888888",     # TODO: Personalize
+    author: "force4",           # TODO: Your Battlesnake Username
+    color: "#ffffff",     # TODO: Personalize
     head: "default",      # TODO: Personalize
     tail: "default",      # TODO: Personalize
   }
