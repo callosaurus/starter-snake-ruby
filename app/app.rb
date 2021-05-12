@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'bundler/setup'
 require 'rack'
 require 'rack/contrib'
 require 'sinatra'
@@ -10,7 +12,7 @@ use Rack::PostBodyContentTypeParser
 # TIP: If you open your Battlesnake URL in browser you should see this data
 get '/' do
   appearance = {
-    apiversion: "1",        
+    apiversion: "1",
     author: "force4",
     color: "#539AEB",
     head: "sand-worm",
