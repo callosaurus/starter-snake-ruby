@@ -3,14 +3,29 @@
 
 # https://docs.battlesnake.com/references/api#example-move-request
 
-def move(board)
-  puts board
-  puts board.class
+def move(request)
+  snakes = request.dig(:board, :snakes)
+  my_snake = request[:you]
 
-  myHeadX = board.dig(:you, :head, :x)
-  puts myHeadX
-  myHeadY = board.dig(:you, :head, :y)
-  puts myHeadY
+  board_width = request.dig(:board, :width)
+  board_height = request.dig(:board, :height)
+
+  my_snake_x = my_snake.dig(:head, :x)
+  my_snake_y = my_snake.dig(:head, :y)
+  excluded_moves = []
+  case my_snake_x
+  when 0
+    excluded_moves.push("left")
+  when board_width - 1
+    excluded_moves.push("right")
+  end
+
+  case my_snake_y
+  when 0
+    excluded_moves.push("down")
+  when board_height - 1
+    excluded_moves.push("up")
+  end
 
   # look at state of board
   # see where "you" is
@@ -25,12 +40,10 @@ def move(board)
 
   # try and 'trap' other snakes?
 
-
   # Choose a random direction to move in
   possible_moves = ["up", "down", "left", "right"]
+  possible_moves = possible_moves - excluded_moves
   move = possible_moves.sample
-
-
 
   puts "MOVE: " + move
   { "move": move }
