@@ -15,8 +15,8 @@ get '/' do
     apiversion: "1",
     author: "force4",
     color: "#539AEB",
-    head: "sand-worm",
-    tail: "round-bum",
+    head: "fang",
+    tail: "curled",
   }
 
   camelcase(appearance).to_json
